@@ -5,6 +5,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter } from "react-router-dom";
 import Browse from './Components/Browse';
 import Login from './Components/Login';
+import { Provider } from 'react-redux';
+import AppStore from './Utils/AppStore';
 
 
 function App() {
@@ -12,7 +14,10 @@ function App() {
 
   return (
     <div className="App">
-      <Body/>
+      <Provider store={AppStore}>
+        <Body/>
+      </Provider>
+      
     </div>
   );
 }

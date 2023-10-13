@@ -76,6 +76,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Header
 - Login Form
 - Sign Up Form
+- Formik for forms
+- Form Validation
+- useRef Hook
+- Firebase Setup
+- Deploying app using Firebase
+- Created Signup user account on firebase
+- Added the user to the redux store on sign in/ sign up with UserSlice
+- Redirect the user to browse page after clicking on sign in/ sign up
+- Implemented Sign Out
+- Done validations
+- Created and Upated the store
+- Update profile API
+- Fetch movies from tmdb api 
+
 
 # Features 
 - Login/Sign up Page
