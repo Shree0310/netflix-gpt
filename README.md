@@ -88,7 +88,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Done validations
 - Created and Upated the store
 - Update profile API
-- Fetch movies from tmdb api 
+- Fetch movies from TMDB api 
+- Bugfix: If the user is not logged inredirecct /browse to sign in page and vice-versa
+- Unsubscribe to the onAuthStateChanged callback
 
 
 # Features 
