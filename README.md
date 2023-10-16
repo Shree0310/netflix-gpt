@@ -96,6 +96,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Fetching movies data from TMDB "now playing movies list" API
 - Updating the store with the now playing movies list
 - Building the browse page.
+- custom hook for Now Playing Movies
+- Create a MoviesSlice
+- Update store with Movie Data
+- Planning for main Container & Secondary Container
+- Fetch data for trailer video
+- Update store with trailer data
+- Embeded the YouTube video and make it autoplay & mute
+
 
 
 # Features 

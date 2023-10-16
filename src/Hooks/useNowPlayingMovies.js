@@ -8,9 +8,9 @@ const useNowPlayingMovies = () =>{
 
     const dispatch = useDispatch(); 
 
-    // const nowPlayingMovies = useSelector(
-    //     (store) => store.movies.nowPlayingMovies
-    //   );
+    const nowPlayingMovies = useSelector(
+        (store) => store.movies.nowPlayingMovies
+      );
     
 
     //Fetching the data and then pushing that data into the store
@@ -25,7 +25,7 @@ const useNowPlayingMovies = () =>{
     //Making the API call in the useEffect because it needs to be called only once
     
     useEffect(() => {
-         getNowPlayingMovies();
+        !nowPlayingMovies &&  getNowPlayingMovies();
     }, []);
 
 };
