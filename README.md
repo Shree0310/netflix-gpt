@@ -103,6 +103,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Fetch data for trailer video
 - Update store with trailer data
 - Embeded the YouTube video and make it autoplay & mute
+- Build Secondary Component
+- Built movie list
+- Built Movie card
+- TMDB image CDN url
+- usePopularMovies custom hook
+- useTopRatedMovies custom hook
+- useUpcomingMovies custom hook
 
 
 
