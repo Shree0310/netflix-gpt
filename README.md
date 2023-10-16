@@ -91,6 +91,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Fetch movies from TMDB api 
 - Bugfix: If the user is not logged inredirecct /browse to sign in page and vice-versa
 - Unsubscribe to the onAuthStateChanged callback
+- Add hardcoded values to the constants file
+- Register on TMDB API & create an app & get access token
+- Fetching movies data from TMDB "now playing movies list" API
+- Updating the store with the now playing movies list
+- Building the browse page.
 
 
 # Features 
