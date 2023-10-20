@@ -6,6 +6,7 @@ import { API_OPTIONS } from "../Utils/Constants";
 
 const useTopRatedMovies = () =>{
 
+    //For memoization 
     const topRatedMovies = useSelector(store => store.topRatedMovies);
 
     const dispatch = useDispatch();

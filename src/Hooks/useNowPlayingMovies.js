@@ -8,8 +8,9 @@ const useNowPlayingMovies = () =>{
 
     const dispatch = useDispatch(); 
 
+    //For memoization 
     const nowPlayingMovies = useSelector(
-        (store) => store.movies.popularMovies
+        (store) => store.movies.nowPlayingMovies
       );
     
 

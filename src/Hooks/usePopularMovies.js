@@ -7,6 +7,7 @@ const usePopularMovies = () =>{
 
     const dispatch = useDispatch(); 
 
+    //For memoization 
     const popularMovies = useSelector(
         (store) => store.movies.popularMovies
       );

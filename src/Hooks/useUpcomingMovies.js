@@ -7,6 +7,7 @@ const useUpcomingMovies = () =>{
 
     const dispatch = useDispatch();
 
+    //For memoization 
     const upcomingMovies = useSelector(store => store.upcomingMovies);
 
     const getUpcomingMovies = async ()=>{
