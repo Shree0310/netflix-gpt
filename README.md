@@ -138,3 +138,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Netflix GPT
     - Search GPT
     - Movie Suggestions
+
+      ```echo "moviesgpt.sourashreeart.com" > docs/CNAME```
