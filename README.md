@@ -113,6 +113,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - GPT search Page
 - GPT search Bar
 - Multi Languauge feature 
+- GPT Search API call
+- fetched gptMovieSuggestions from TMDB API
+- created gptSlice added data
+- Reused Movie List Component to make movie suggestion container
+- Memoization
+- Added .env file
+- Adding .env file to .gitignore
+- Made the site responsive for mobile
 
 
 
