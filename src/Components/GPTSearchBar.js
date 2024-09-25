@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../Utils/LanguageConstants";
 import { useRef } from "react";
-import openai from "../Utils/openai";
 import Error from "./Error";
 import { API_OPTIONS } from "../Utils/Constants";
 import { addGPTMovieResult } from "../Utils/GPTSlice";
@@ -29,16 +28,42 @@ const GPTSearchBar = () =>{
         console.log(searchText.current.value);
         //Make an API call to open ai and get movie results
 
-        const GPTQuery = "Act as a movie recommendation system" + searchText.current.value + "only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gaddar, Sholay, Don, Golmal, Koi Mil Gya";
+        const systemPrompt = "You are a movie recommendation Assistant, your task is to suggest only 5 movie names based on users query. The output should only be a comma separated list. Example Result: mov1, mov2 ...";
 
-        const gptResults = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: GPTQuery}],
-            model: 'gpt-3.5-turbo',
-          });
-          if(!gptResults.choices){
-            <Error/>
-          }
-          console.log(gptResults.choices?.[0]?.message.content);
+        let messages = [{
+            "role": "system",
+            "content": systemPrompt
+        }, {
+            "role": "user",
+            "content": searchText.current.value
+        }]
+
+        const fetchData = async ()=>{
+            const url = "https://openai.adiagr.in/movie_gpt_openai/v1/chat/completions"; 
+            const data = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    model: 'gpt-3.5-turbo',
+                    messages: messages
+                })
+            });
+            let jsonData = await data.json();
+            return jsonData;
+        }
+
+        // const GPTQuery = "Act as a movie recommendation system" + searchText.current.value + "only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gaddar, Sholay, Don, Golmal, Koi Mil Gya";
+
+
+
+        // const gptResults = await openai.chat.completions.create({
+        //     messages: [{ role: 'user', content: GPTQuery}],
+        //     model: 'gpt-3.5-turbo',
+        //   });
+        //   if(!gptResults.choices){
+        //     <Error/>
+        //   }
+        //   console.log(gptResults.choices?.[0]?.message.content);
+         let gptResults = await fetchData();
           const gptMovieList = gptResults.choices?.[0]?.message.content.split(",");
 
           //For each movie search TMDB API
