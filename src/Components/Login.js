@@ -147,6 +147,15 @@ const Login = () =>{
                     : "Already a user? Sign in now"}
                 </p>  
 
+                <div className="border-t border-gray-600 my-4"></div>
+                
+                <button 
+                    className="py-4 w-full h-14 text-center bg-gray-600 hover:bg-gray-700 rounded-md"
+                    onClick={() => window.location.href = '/demo'}
+                >
+                    Try Demo Version
+                </button>
+
             </form>  
          </div>
          

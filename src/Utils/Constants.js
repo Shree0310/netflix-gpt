@@ -4,11 +4,12 @@ export const USER_AVATAR = "https://occ-0-1492-3663.1.nflxso.net/dnm/api/v6/K6hj
 
 export const LOGIN_PAGE_BACKGROUND = "https://assets.nflxext.com/ffe/siteui/vlv3/893a42ad-6a39-43c2-bbc1-a951ec64ed6d/1d86e0ac-428c-4dfa-9810-5251dbf446f8/IN-en-20231002-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
+export const TMDB_API_KEY = process.env.REACT_APP_TMDB_KEY;
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: "Bearer " + process.env.REACT_APP_TMDB_KEY
     },
   };
 

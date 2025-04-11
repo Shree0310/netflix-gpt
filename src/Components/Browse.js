@@ -7,17 +7,27 @@ import useTopRatedMovies from "../Hooks/useTopRatedMovies.js";
 import useUpcomingMovies from "../Hooks/useUpcomingMovies.js";
 import GPTSearch from "./GPTSearch.js";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Browse = () =>{
-
+    const navigate = useNavigate();
+    const user = useSelector(store => store.user);
     const showGptSearch = useSelector(store => store.gpt.showGptSearch);
+    const isDemoMode = sessionStorage.getItem('isDemoMode') === 'true';
 
-    useNowPlayingMovies();
-    usePopularMovies();
-    useTopRatedMovies();
-    useUpcomingMovies();
+    useEffect(() => {
+        // Only redirect to login if not in demo mode and not logged in
+        if (!user && !isDemoMode) {
+            navigate("/");
+        }
+    }, [user, isDemoMode, navigate]);
 
-    
+    // Always call hooks, but they can handle their own conditional logic internally
+    useNowPlayingMovies(user || isDemoMode);
+    usePopularMovies(user || isDemoMode);
+    useTopRatedMovies(user || isDemoMode);
+    useUpcomingMovies(user || isDemoMode);
 
     return (
         <div>

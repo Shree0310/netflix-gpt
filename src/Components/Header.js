@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../Utils/Firebase";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
@@ -10,16 +10,13 @@ import { LOGO, SUPPORTED_LANGUAGES } from "../Utils/Constants";
 import { toggleGptSearchView } from "../Utils/GPTSlice";
 import { changeLanguage } from "../Utils/ConfigSlice";
 
-
-
-
 const Header = () =>{
     const dispatch = useDispatch();
-
     const navigate = useNavigate();
+    const location = useLocation();
+    const isDemoMode = sessionStorage.getItem('isDemoMode') === 'true';
 
     const user = useSelector(store => store.user);
-
     const showGptSearch = useSelector(store => store.gpt.showGptSearch);
 
     const handleSignOut = ()=>{     
@@ -29,10 +26,7 @@ const Header = () =>{
         // An error happened.
         navigate("/error");
         });
-
     }
-
-
 
     const handleGPTSerachClick = ()=>{
       //Toggle GPT Search
@@ -57,19 +51,22 @@ const Header = () =>{
                 photoURL: photoURL,
               })
             );
-            navigate("/browse");
+            if (!isDemoMode) {
+              navigate("/browse");
+            }
           } else {
             dispatch(removeUser());
-            navigate("/");
+            if (!isDemoMode && location.pathname !== '/demo') {
+              navigate("/");
+            }
           }
         });
     
         // Unsiubscribe when component unmounts
         return () => unsubscribe();
-      }, []);
+      }, [isDemoMode, location.pathname]);
 
     return (
-
         <div className="absolute w-screen px-8 md:py-2 bg-gradient-to-b
          from-black z-10 flex flex-col md:flex-row md:justify-between ">
             <img 
@@ -77,7 +74,7 @@ const Header = () =>{
             src={LOGO}
             alt="Netflix-logo"
             />
-            {user &&(
+            {(user || isDemoMode) &&(
                 <div className="flex">
                   
                   {showGptSearch && (<div className=" px-2 py-6 rounded-md md:rounded-md">
@@ -96,18 +93,19 @@ const Header = () =>{
                     <button className="w-32 h-12 text-white bg-purple-700 rounded-md cursor-pointer" onClick={handleGPTSerachClick}>
                       {showGptSearch ? "Home Page" : "GPT Search"}</button>
                   </div>
-                  <img 
-                  className="w-10 h-10 my-5 mx-2"
-                  src={user?.photoURL}
-                  alt="profile-icon"
-                  />
-                <button className="text-white" onClick={handleSignOut} >Sign Out</button>
+                  {user && (
+                    <>
+                      <img 
+                      className="w-10 h-10 my-5 mx-2"
+                      src={user?.photoURL}
+                      alt="profile-icon"
+                      />
+                      <button className="text-white" onClick={handleSignOut} >Sign Out</button>
+                    </>
+                  )}
              </div>
-
             )}
-             
         </div>
-       
     );
 }
 
