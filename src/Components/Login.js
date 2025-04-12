@@ -7,13 +7,13 @@ import { updateProfile } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser } from "../Utils/UserSlice";
 import { LOGIN_PAGE_BACKGROUND, USER_AVATAR } from "../Utils/Constants";
-
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () =>{
     const [isSignInForm, setIsSignInForm] = useState(true);
     const [errorMessage, setErrorMesssage] = useState(null);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     //Used to reference
     const name = useRef(null);
@@ -151,7 +151,7 @@ const Login = () =>{
                 
                 <button 
                     className="py-4 w-full h-14 text-center bg-gray-600 hover:bg-gray-700 rounded-md"
-                    onClick={() => window.location.href = '/demo'}
+                    onClick={() => navigate('/demo')}
                 >
                     Try Demo Version
                 </button>
